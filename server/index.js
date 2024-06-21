@@ -12,7 +12,8 @@ app.use(cors(
   {
   origin: ['https://master--24todo-client.netlify.app/'], // Allow requests from this origin
   methods: ['GET', 'POST', 'DELETE'],
-    credentials: true
+  allowedHeaders: ['Content-Type'],
+  credentials: true
 }
 ));
 
