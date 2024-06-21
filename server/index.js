@@ -8,14 +8,12 @@ const uri = process.env.MONGO_URL
 const cors = require("cors");
 
 app.use(express.json());
-app.use(cors(
-  {
-  origin: ['https://master--24todo-client.netlify.app/'], // Allow requests from this origin
+app.use(cors({
+  origin: 'https://master--24todo-client.netlify.app',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
-}
-));
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 mongoose.connect(uri)
 .then(() => console.log('Connected to MongoDB Atlas'))
