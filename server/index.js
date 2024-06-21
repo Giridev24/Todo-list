@@ -10,7 +10,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors(
   {
-  origin: [''], // Allow requests from this origin
+  origin: ['https://master--24todo-client.netlify.app/'], // Allow requests from this origin
   methods: ['GET', 'POST', 'DELETE'], // Allow these HTTP methods
   allowedHeaders: ['Content-Type'], // Allow these headers
 }
