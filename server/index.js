@@ -20,6 +20,7 @@ app.get("/home", async (req, res) => {
   try {
     const todos = await SampleModel.find();
     return res.status(200).json(todos);
+    console.log("backend data collected successfully")
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error fetching data" });
