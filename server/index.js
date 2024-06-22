@@ -14,10 +14,7 @@ const corsOptions = {
   credentials: true,
   allowedHeaders: ["Content-Type"]
 };
-app.get('/cors', (req, res) => {
-  res.set('Access-Control-Allow-Origin', 'https://master--24todo-client.netlify.app/'); 
-  res.send({ "msg": "This has CORS enabled 🎈" });
-});
+
 
 app.use(cors(corsOptions));
 
@@ -29,6 +26,7 @@ mongoose.connect(uri)
 
 app.get("/home", async (req, res) => {
   try {
+     res.set('Access-Control-Allow-Origin', 'https://master--24todo-client.netlify.app/');
     const todos = await SampleModel.find();
     return res.status(200).json(todos);
     console.log("backend data collected successfully")
