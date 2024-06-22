@@ -88,7 +88,7 @@ const Home = () => {
             placeholder="Enter your text here"
           />
           <button className="add" type="submit">
-            {editItemId ? "Update" : "Add"}
+            {editItemId ? <div className="text-sm">"Update"</div> : "Add"}
           </button>
           <div
             className="content"
