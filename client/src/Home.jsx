@@ -110,7 +110,7 @@ const Home = () => {
                     <div className="row d-flex justify-content-around align-items-center">
                       <div className="col-1">
                         <input
-                          className="box"
+                          className="box mt-2"
                           type="checkbox"
                           checked={checkedItems[data._id] || false}
                           onChange={() => handleCheckboxChange(data._id)}
@@ -126,7 +126,7 @@ const Home = () => {
                           />
                         ) : (
                           <h6
-                            className={`pt-1 list ${
+                            className={`pt-1 mt-1 list ${
                               checkedItems[data._id] ? "strikethrough" : ""
                             }`}
                           >
