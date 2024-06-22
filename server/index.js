@@ -1,53 +1,54 @@
 const express = require("express");
-require('dotenv').config()
-const app = express();
 const mongoose = require("mongoose");
-const SampleModel = require("./sample");
-const port = process.env.PORT;
-const uri = process.env.MONGO_URL
 const cors = require("cors");
+require('dotenv').config();
 
-app.use(express.json());
+const app = express();
+const port = process.env.PORT || 3000;
+const uri = process.env.MONGO_URL;
+
+// CORS options
 const corsOptions = {
-  origin: 'https://master--24todo-client.netlify.app/',
-  methods: ['GET', 'POST', 'DELETE', 'PUT'],
-  credentials: true,
-  allowedHeaders: ["Content-Type"]
+  origin: 'https://master--24todo-client.netlify.app', // Allow requests only from this origin
+  methods: ['GET', 'POST', 'DELETE', 'PUT'], // Allow these methods
+  credentials: true, // Allow sending credentials (cookies, authorization headers)
+  allowedHeaders: ["Content-Type"] // Allow these headers
 };
 
-
+// Middleware
 app.use(cors(corsOptions));
+app.use(express.json());
 
-mongoose.connect(uri)
-.then(() => console.log('Connected to MongoDB Atlas'))
-.catch(err => console.error('Error connecting to MongoDB Atlas', err));
+// Connect to MongoDB
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch(err => console.error('Error connecting to MongoDB Atlas', err));
 
+// Sample Model Schema (assuming it's defined in ./sample.js)
+const SampleModel = require("./sample");
 
-
+// Routes
 app.get("/home", async (req, res) => {
   try {
-     res.set('Access-Control-Allow-Origin', 'https://master--24todo-client.netlify.app/');
     const todos = await SampleModel.find();
-    return res.status(200).json(todos);
-    console.log("backend data collected successfully")
+    res.json(todos);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).json({ error: "Error fetching data" });
   }
 });
 
 app.post("/home", async (req, res) => {
   try {
-    const todo = req.body.todo;
-    await SampleModel.create({
-      todo: todo,
-    });
-    res.status(201).json({ message: "Order placed successfully!" });
+    const { todo } = req.body;
+    const newTodo = await SampleModel.create({ todo });
+    res.status(201).json(newTodo);
   } catch (error) {
-    console.error("Error uploading order details:", error);
+    console.error("Error creating todo:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 app.put('/home/:id', async (req, res) => {
   const { id } = req.params;
   const { todo } = req.body;
@@ -58,23 +59,23 @@ app.put('/home/:id', async (req, res) => {
     }
     res.json(updatedTodo);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
+    console.error("Error updating todo:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
-app.delete("/home/:id", async (req,res) => {
+
+app.delete("/home/:id", async (req, res) => {
   try {
-    const del = req.params.id;
-    await SampleModel.findByIdAndDelete(del);
-    const result = await SampleModel.find();
-    res.json(result);
+    const { id } = req.params;
+    await SampleModel.findByIdAndDelete(id);
+    res.json({ message: 'Todo deleted successfully' });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Error deleting data" });
+    console.error("Error deleting todo:", err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
+// Start server
 app.listen(port, () => {
-  console.log("Server is running on port", port);
+  console.log(`Server is running on port ${port}`);
 });
-
