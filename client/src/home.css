@@ -55,7 +55,7 @@ form div h3 {
 
 form .inp {
   margin-top: 10px;
-  width: 85%;
+  width: 240px;
   padding: 5px;
   border: 2px solid rgb(132, 132, 144);
   border-right: 0;
@@ -166,7 +166,10 @@ form .add {
 }
 
 @media only screen and (max-width: 600px) {
-
+form.inp{
+width: 200px;
+  
+}
   .todo {
     padding: 15px;
     background-color: aliceblue;
