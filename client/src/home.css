@@ -166,10 +166,6 @@ form .add {
 }
 
 @media only screen and (max-width: 600px) {
-form.inp{
-width: 200px;
-  
-}
   .todo {
     padding: 15px;
     background-color: aliceblue;
