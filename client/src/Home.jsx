@@ -77,7 +77,7 @@ const Home = () => {
 
   return (
     <div className="container c">
-      <div className="todo fadeInUp-animation">
+      <div className="todo d-flex fadeInUp-animation">
         <form className="text-center" onSubmit={handleUpload}>
           <h1>To do list</h1>
           <input
