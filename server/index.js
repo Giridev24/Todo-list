@@ -29,7 +29,7 @@ const SampleModel = require("./sample");
 // Routes
 app.get("/home", async (req, res) => {
   try {
-    res.header("Access-Control-Allow-Origin", "*");
+   
     const todos = await SampleModel.find();
     res.json(todos);
   } catch (err) {
