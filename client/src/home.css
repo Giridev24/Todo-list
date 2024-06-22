@@ -75,18 +75,7 @@ form .add {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-form .ubtn {
-  padding: 7px 7px;
-  font-size: small;
-  font-weight: 500;
-  background-color: rgb(23, 37, 77);
-  color: rgb(255, 255, 255);
-  margin-left: 0px;
-  border: 0px;
-  border-radius: 5px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  }
+
 .data {
   background-color: rgb(233, 222, 255);
   color: rgb(16, 13, 67);
@@ -177,9 +166,7 @@ form .ubtn {
 }
 
 @media only screen and (max-width: 600px) {
-  form.inp{
-    width:200px;
-  }
+
   .todo {
     padding: 15px;
     background-color: aliceblue;
