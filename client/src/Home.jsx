@@ -36,14 +36,14 @@ const Home = () => {
     try {
       if (editItemId) {
         await axios.put(`${baseUrl}/home/${editItemId}`, { todo: todo });
+        await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Updated successfully</h6>);
         setEditItemId(null);
-        await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Edited successfully</h6>);
       } else {
         await axios.post(`${baseUrl}/home`, { todo: todo });
+        await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Added successfully</h6>);
       }
       fetchData();
       setTodo("");
-      await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Added successfully</h6>);
 
     } catch (error) {
       console.error("Error uploading data:", error);
