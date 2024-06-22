@@ -87,9 +87,9 @@ const Home = () => {
             onChange={todoNew}
             placeholder="Enter your text here"
           />
-          <div type="submit">
-            {editItemId ? <button className="ubtn">Update</button>: <button className="add">Add</button>}
-          </div>
+           <button className="add" type="submit">
+            {editItemId ? "Update" : "Add"}
+          </button>
           <div
             className="content"
             style={{
