@@ -15,6 +15,17 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"]
 };
 
+// Define a custom middleware function to set Access-Control-Allow-Origin header
+const setCorsHeaders = (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://master--24todo-client.netlify.app');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Max-Age', '1800');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type');
+  res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, PATCH, OPTIONS');
+  next();
+};
+
+app.use(setCorsHeaders); // Apply the custom middleware to set CORS headers
 app.use(cors(corsOptions));
 
 mongoose.connect(uri)
