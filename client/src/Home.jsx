@@ -89,7 +89,7 @@ const Home = () => {
           />
           <div type="submit">
             {editItemId ? <button className="ubtn">Update</button>: <button className="add">Add</button>}
-          </div>>
+          </div>
           <div
             className="content"
             style={{
