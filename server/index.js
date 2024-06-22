@@ -9,10 +9,10 @@ const cors = require("cors");
 
 app.use(express.json());
 const corsOptions = {
-  origin: 'https://master--24todo-client.netlify.app',
+  origin: '*',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"]
+  allowedHeaders: ["Content-Type"]
 };
 
 // Define a custom middleware function to set Access-Control-Allow-Origin header
