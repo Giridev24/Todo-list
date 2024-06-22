@@ -11,8 +11,6 @@ const uri = process.env.MONGO_URL;
 const corsOptions = {
   origin: 'https://master--24todo-client.netlify.app', // Allow requests only from this origin
   methods: ['GET', 'POST', 'DELETE', 'PUT'], // Allow these methods
-  credentials: true, // Allow sending credentials (cookies, authorization headers)
-  allowedHeaders: ["Content-Type"] // Allow these headers
 };
 
 // Middleware
@@ -20,7 +18,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('Error connecting to MongoDB Atlas', err));
 
