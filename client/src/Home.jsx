@@ -12,7 +12,7 @@ const Home = () => {
   const [datas, setDatas] = useState([]);
   const [checkedItems, setCheckedItems] = useState({});
   const [editItemId, setEditItemId] = useState(null);
-  const [toastVisible, setToastVisible] = useState(false);
+  const [loading, setLoading] = useState(true); // Track loading state
 
   const todoNew = (e) => {
     setTodo(e.target.value);
@@ -26,8 +26,10 @@ const Home = () => {
     try {
       const response = await axios.get(`${baseUrl}/home`);
       setDatas(response.data);
+      setLoading(false); // Set loading to false once data is fetched
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false); // Handle loading state even on error
     }
   };
 
@@ -36,15 +38,15 @@ const Home = () => {
     try {
       if (editItemId) {
         await axios.put(`${baseUrl}/home/${editItemId}`, { todo: todo });
-        await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Updated successfully</h6>);
         setEditItemId(null);
+        fetchData();
+        toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Updated successfully</h6>);
       } else {
         await axios.post(`${baseUrl}/home`, { todo: todo });
-        await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Added successfully</h6>);
+        fetchData();
+        toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Added successfully</h6>);
       }
-      fetchData();
       setTodo("");
-
     } catch (error) {
       console.error("Error uploading data:", error);
     }
@@ -60,16 +62,13 @@ const Home = () => {
   const handleEdit = (id, currentTodo) => {
     setEditItemId(id);
     setTodo(currentTodo);
-   
   };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${baseUrl}/home/${id}`);
       fetchData();
-      await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Deleted successfully</h6>);
-      setToastVisible(true);
-      setTimeout(() => setToastVisible(false), 2000);
+      toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Deleted successfully</h6>);
     } catch (error) {
       console.error("Error deleting item:", error);
     }
@@ -99,13 +98,13 @@ const Home = () => {
               textAlign: "center",
             }}
           >
-            <div>
-              {datas.length === 0 ? (
-                <div>
-                  <h3 className="mt-5">No Records</h3>
-                </div>
-              ) : (
-                datas.map((data) => (
+            {loading ? (
+              <h3>Loading...</h3>
+            ) : datas.length === 0 ? (
+              <h3 className="mt-5">No Records</h3>
+            ) : (
+              <div>
+                {datas.map((data) => (
                   <div className="data" key={data._id}>
                     <div className="row d-flex justify-content-around align-items-center">
                       <div className="col-1">
@@ -148,9 +147,9 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                ))
-              )}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </form>
         <ToastContainer />
