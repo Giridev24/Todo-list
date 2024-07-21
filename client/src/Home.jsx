@@ -22,6 +22,15 @@ const Home = () => {
     fetchData();
   }, []);
 
+ useEffect(() => {
+    const interval = setInterval(() => {
+      fetchData();
+    }, 2 * 60 * 1000); // 2 minutes in milliseconds
+
+    return () => clearInterval(interval); // Clean up interval on component unmount
+  }, []); 
+
+  
   const fetchData = async () => {
     try {
       const response = await axios.get(`${baseUrl}/home`);
