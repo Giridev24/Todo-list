@@ -22,15 +22,6 @@ const Home = () => {
     fetchData();
   }, []);
 
- useEffect(() => {
-    const interval = setInterval(() => {
-      fetchData();
-    }, 2 * 60 * 1000); // 2 minutes in milliseconds
-
-    return () => clearInterval(interval); // Clean up interval on component unmount
-  }, []); 
-
-  
   const fetchData = async () => {
     try {
       const response = await axios.get(`${baseUrl}/home`);
@@ -108,7 +99,7 @@ const Home = () => {
             }}
           >
             {loading ? (
-              <h3>Loads in 50 secs...</h3>
+              <h5>Loads in 50 secs...</h5>
             ) : datas.length === 0 ? (
               <h3 className="mt-5">No Records</h3>
             ) : (
