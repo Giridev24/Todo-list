@@ -99,7 +99,7 @@ const Home = () => {
             }}
           >
             {loading ? (
-              <h5>Loads in 50 secs...</h5>
+              <h5 className="mt-5">Loads in 50 secs...</h5>
             ) : datas.length === 0 ? (
               <h3 className="mt-5">No Records</h3>
             ) : (
