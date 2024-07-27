@@ -19,11 +19,11 @@ body {
 .todo {
   padding: 15px;
   background-color: aliceblue;
-  width: 400px;
+  width: 600px;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
-  height: 420px;
+  height: 620px;
   overflow-y: auto;
 }
 .todo::-webkit-scrollbar {
@@ -55,7 +55,7 @@ form div h3 {
 
 form .inp {
   margin-top: 10px;
-  width: 240px;
+  width: 340px;
   padding: 5px;
   border: 2px solid rgb(132, 132, 144);
   border-right: 0;
@@ -81,13 +81,13 @@ form .add {
   color: rgb(16, 13, 67);
   width: 93%;
   margin: 10px;
-  height: 34px;
+  height: 44px;
   border-radius: 5px;
   margin-right: 35px;
 }
 
 .data .row {
-  width: 300px;
+  width: 400px;
 }
 
 .data .box {
@@ -177,5 +177,17 @@ form .add {
     height: 420px;
     overflow-y: auto;
   }
-
+form .inp {
+  margin-top: 10px;
+  width: 240px;
+  padding: 5px;
+  border: 2px solid rgb(132, 132, 144);
+  border-right: 0;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+  .data .row {
+  width: 300px;
+}
 }
