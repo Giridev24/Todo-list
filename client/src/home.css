@@ -19,7 +19,7 @@ body {
 .todo {
   padding: 15px;
   background-color: aliceblue;
-  width: 400px;
+  width: 100%;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
@@ -87,7 +87,7 @@ form .add {
 }
 
 .data .row {
-  width: 400px;
+  width: 300px;
 }
 
 .data .box {
