@@ -95,7 +95,7 @@ form .add {
   left: 5px;
 }
 .data h6{
- 
+  letter-spacing: 1px;
   font-weight: bold;
 }
 .trash:hover {
