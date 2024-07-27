@@ -12,7 +12,7 @@ const Home = () => {
   const [datas, setDatas] = useState([]);
   const [checkedItems, setCheckedItems] = useState({});
   const [editItemId, setEditItemId] = useState(null);
-  const [toastVisible, setToastVisible] = useState(false);
+  const [loading, setLoading] = useState(false); // New state for loading
 
   const todoNew = (e) => {
     setTodo(e.target.value);
@@ -23,11 +23,14 @@ const Home = () => {
   }, []);
 
   const fetchData = async () => {
+    setLoading(true); // Set loading to true when starting to fetch data
     try {
       const response = await axios.get(`${baseUrl}/home`);
       setDatas(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false); // Set loading to false when data fetching is done
     }
   };
 
@@ -44,7 +47,6 @@ const Home = () => {
       }
       fetchData();
       setTodo("");
-
     } catch (error) {
       console.error("Error uploading data:", error);
     }
@@ -60,7 +62,6 @@ const Home = () => {
   const handleEdit = (id, currentTodo) => {
     setEditItemId(id);
     setTodo(currentTodo);
-   
   };
 
   const handleDelete = async (id) => {
@@ -68,8 +69,6 @@ const Home = () => {
       await axios.delete(`${baseUrl}/home/${id}`);
       fetchData();
       await toast(<h6 style={{ fontWeight: 'bold', color: 'rgb(29, 9, 78)' }}>Todo Deleted successfully</h6>);
-      setToastVisible(true);
-      setTimeout(() => setToastVisible(false), 2000);
     } catch (error) {
       console.error("Error deleting item:", error);
     }
@@ -100,7 +99,9 @@ const Home = () => {
             }}
           >
             <div>
-              {datas.length === 0 ? (
+              {loading ? ( // Conditionally render loading message
+                <h4 className=" text-center text-warning" style={{ letterSpacing: '5px' }}>Loads in 50 sec...</h4>
+              ) : datas.length === 0 ? (
                 <div>
                   <h3 className="mt-5">No Records</h3>
                 </div>
