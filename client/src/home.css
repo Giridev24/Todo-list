@@ -19,7 +19,7 @@ body {
 .todo {
   padding: 15px;
   background-color: aliceblue;
-  width: 600px;
+  width: 400px;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
@@ -55,7 +55,7 @@ form div h3 {
 
 form .inp {
   margin-top: 10px;
-  width: 340px;
+  width: 240px;
   padding: 5px;
   border: 2px solid rgb(132, 132, 144);
   border-right: 0;
@@ -79,7 +79,7 @@ form .add {
 .data {
   background-color: rgb(233, 222, 255);
   color: rgb(16, 13, 67);
-  width: 100%;
+  width: 93%;
   margin: 10px;
   height: 34px;
   border-radius: 5px;
@@ -87,7 +87,7 @@ form .add {
 }
 
 .data .row {
-  width: 500px;
+  width: 400px;
 }
 
 .data .box {
