@@ -100,7 +100,7 @@ const Home = () => {
           >
             <div>
               {loading ? ( // Conditionally render loading message
-                <h4 className=" text-center text-warning" style={{ letterSpacing: '5px' }}>Loads in 50 sec...</h4>
+                <h4 className=" text-center text-warning mt-3" style={{ letterSpacing: '4px' }}>Loads in 50 sec...</h4>
               ) : datas.length === 0 ? (
                 <div>
                   <h3 className="mt-5">No Records</h3>
