@@ -10,6 +10,19 @@ body {
   width: 100vw;
 }
 
+.custom-toast {
+  font-weight: medium;
+  color: rgb(0, 150, 255);
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.custom-toast-container {
+  min-width: 50vw;
+  display: flex;
+  justify-content: start; 
+}
+
 .c {
   min-height: 100vh;
   display: grid;
