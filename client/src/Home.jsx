@@ -29,7 +29,7 @@ const Home = () => {
       const timer = setTimeout(() => {
         toast.success(
           <h3 className="custom-toast">
-            Netlify's free deployment took <span className="text-warning">50 seconds</span> to wake up. Please wait and use the app. <sub>-GIRI</sub>
+            Render's free deployment took <span className="text-warning">50 seconds</span> to wake up. Please wait and use the app. <sub>-GIRI</sub>
           </h3>,
           {
             position: "top-center",
