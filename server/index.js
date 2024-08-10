@@ -9,7 +9,7 @@ const uri = process.env.MONGO_URL;
 
 // CORS options
 const corsOptions = {
-  origin: 'https://master--24todo-client.netlify.app', // Allow requests only from this origin
+  origin: 'https://todo-client-r6m4.onrender.com', // Allow requests only from this origin
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true// Allow these methods
 };
