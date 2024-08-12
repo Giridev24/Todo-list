@@ -9,7 +9,7 @@ const uri = process.env.MONGO_URL;
 
 // CORS options
 const corsOptions = {
-  origin: 'https://todo-pied-three.vercel.app', // Allow requests only from this origin
+  origin: 'https://todo-client-nu.vercel.app', // Allow requests only from this origin
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true// Allow these methods
 };
