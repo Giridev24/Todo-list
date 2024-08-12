@@ -20,31 +20,6 @@ const Home = () => {
 
   useEffect(() => {
     fetchData(); 
-
-   
-    const hasShownToast = localStorage.getItem('hasShownToast');
-
-    if (!hasShownToast) {
-    
-      const timer = setTimeout(() => {
-        toast.success(
-          <h3 className="custom-toast">
-            Render's free deployment took <span className="text-warning">50 seconds</span> to wake up. Please wait and use the app. <sub>-GIRI</sub>
-          </h3>,
-          {
-            position: "top-center",
-            autoClose: 15000,
-            className: "custom-toast-container", 
-            bodyClassName: "custom-toast"
-          }
-        );
-
-        // Mark that the toast has been shown
-        localStorage.setItem('hasShownToast', 'true');
-      }, 2000);
-
-      return () => clearTimeout(timer); // Clean up timer on unmount
-    }
   }, []);
 
   const fetchData = async () => {
@@ -125,7 +100,7 @@ const Home = () => {
           >
             <div>
               {loading ? ( // Conditionally render loading message
-                <h4 className=" text-center text-warning mt-3" style={{ letterSpacing: '4px' }}>Loads in 50 sec...</h4>
+                <h4 className=" text-center text-warning mt-5" style={{ letterSpacing: '4px' }}>Loading...</h4>
               ) : datas.length === 0 ? (
                 <div>
                   <h3 className="mt-5">No Records</h3>
