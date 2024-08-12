@@ -1,1 +1,1 @@
-export const baseUrl = 'https://todo-6vss.onrender.com'
+export const baseUrl = 'https://todo-server-murex.vercel.app'
