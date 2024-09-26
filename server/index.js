@@ -9,7 +9,7 @@ const uri = process.env.MONGO_URL;
 
 // CORS options
 const corsOptions = {
-  origin: 'https://todo-client-nu.vercel.app', // Allow requests only from this origin
+  origin: 'https://todo-client-nu.vercel.app',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true// Allow these methods
 };
@@ -23,7 +23,7 @@ mongoose.connect(uri)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.error('Error connecting to MongoDB Atlas', err));
 
-// Sample Model Schema (assuming it's defined in ./sample.js)
+
 const SampleModel = require("./sample");
 
 // Routes
