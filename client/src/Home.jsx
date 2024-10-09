@@ -78,7 +78,7 @@ const Home = () => {
     <div className="container c">
       <div className="todo fadeInUp-animation">
         <form className="text-center" onSubmit={handleUpload}>
-          <h1>To do list</h1>
+          <h1>To-do list</h1>
           <input
             className="inp"
             type="text"
