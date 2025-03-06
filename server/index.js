@@ -9,7 +9,7 @@ const uri = process.env.MONGO_URL;
 
 // CORS options
 const corsOptions = {
-  origin: 'https://todo-client-nu.vercel.app',
+  origin: 'https://todo-list-omega-ochre.vercel.app',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true// Allow these methods
 };
